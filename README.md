@@ -13,10 +13,10 @@ the goal of which it is to come up with a suitable reputation based voting algor
 
 * **[Definitions.py](Definitions.py)**
   
-  Class definitions for voters, candidates and NFTs that work as prove a voter's qualifications.
+  Class definitions for voters, candidates and NFTs that prove a voter's qualifications.
   The list of available NFTs is taken from [this presentation](https://docs.google.com/presentation/d/1fqsmqvMTWeL61E2OMZIbWVfufKEIKJCkYOp6sth6K_Q/edit#slide=id.g1ff3e012012_0_0).
   
-  In future, certain accomplishments may also be attributed to each candidate. The basic structure for this is hinted at, but not yet fully built out in the code.
+  In future, certain accomplishments may also be attributed to each candidate. A basic structure for this is hinted at, but not yet fully built out in the code.
 
   The idea is that the final voting mechanism (yet to be designed) may use knowledge of voters' NFTs and candidates' accomplishments to find the most 'reputable' candidate.
 
@@ -29,7 +29,7 @@ the goal of which it is to come up with a suitable reputation based voting algor
 
   This is where the action happens.
 
-  For now, only a single voting algorithm has been implemented, as a proof of concept:
+  For now, only one voting algorithm has been implemented, as a proof of concept:
   A quick-and-dirty popularity contest which ignores any notion of reputation.
 
   The next step will be to come up with other - better - algorithms.
