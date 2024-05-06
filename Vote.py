@@ -17,7 +17,7 @@ def popularity_contest(sample):
 
 
 # Run the test
-voters = Testdata.getSample()   # Returns a list of voters, with votes and proven qualifications
-winner = popularity_contest(voters)           # Run the voting algorithm
+votes = Testdata.getSample()   # Fetch the list of votes - ie. voters with preferred candidates and personal qualifications
+winner = popularity_contest(votes)           # Run the voting algorithm
 print(winner)                   # Print the id of the winner
 
