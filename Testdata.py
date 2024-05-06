@@ -1,6 +1,16 @@
 import copy
 from Definitions import *
 
+# The eligible candidates.
+# For now, let's just assume that they all fulfill the requirements.
+# In future, a list of a candidate's proven accomplishments could be used by a voting algorithm.
+CANDIDATES = {
+    "C1": FellowshipCandidate("C1", [Accomplishments.FULFILLED_ALL_REQUIREMENTS]),
+    "C2": FellowshipCandidate("C2", [Accomplishments.FULFILLED_ALL_REQUIREMENTS]),
+    "C3": FellowshipCandidate("C3", [Accomplishments.FULFILLED_ALL_REQUIREMENTS]),
+    "C4": FellowshipCandidate("C4", [Accomplishments.FULFILLED_ALL_REQUIREMENTS]),
+}
+
 # Sample voter data.
 # Each voter has voted for a specific candidate. Different voters have different proven qualifications.
 # One voter in the sample is a fellowship candidate. Should they be allowed to vote?

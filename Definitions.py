@@ -16,16 +16,6 @@ class FellowshipCandidate:
     def __eq__(self, other):
         return (self.id == other.id)
 
-# The eligible candidates.
-# For now, let's just assume that they all fulfill the requirements.
-# In future, a list of a candidate's proven accomplishments could be used by a voting algorithm.
-CANDIDATES = {
-    "C1": FellowshipCandidate("C1", [Accomplishments.FULFILLED_ALL_REQUIREMENTS]),
-    "C2": FellowshipCandidate("C2", [Accomplishments.FULFILLED_ALL_REQUIREMENTS]),
-    "C3": FellowshipCandidate("C3", [Accomplishments.FULFILLED_ALL_REQUIREMENTS]),
-    "C4": FellowshipCandidate("C4", [Accomplishments.FULFILLED_ALL_REQUIREMENTS]),
-}
-
 class Voter():
 
     def __init__(self, vote = None, nfts = [], hasTeaAccount = True, hasWalletConnected = True, isCandidate = False):

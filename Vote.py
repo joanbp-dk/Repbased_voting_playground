@@ -1,7 +1,6 @@
-import Definitions
 import Testdata
 
-CANDIDATES = Definitions.CANDIDATES
+CANDIDATES = Testdata.CANDIDATES
 
 # A quick and dirty voting algorithm.
 # Counts all votes and returns the id of the candidate who got the most votes.
@@ -17,7 +16,7 @@ def popularity_contest(sample):
 
 
 # Run the test
-votes = Testdata.getSample()   # Fetch the list of votes - ie. voters with preferred candidates and personal qualifications
-winner = popularity_contest(votes)           # Run the voting algorithm
-print(winner)                   # Print the id of the winner
+votes = Testdata.getSample()            # Fetch the list of votes - ie. voters with preferred candidates and personal qualifications
+winner = popularity_contest(votes)      # Run the voting algorithm
+print(winner)                           # Print the id of the winner
 
