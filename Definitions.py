@@ -1,13 +1,6 @@
 from enum import Enum
 
-class FellowshipCandidateEnum(Enum):
-
-    C1 = 1,                             # Fellowship candidate 1
-    C2 = 2,                             # Fellowship candidate 2
-    C3 = 3,                             # Fellowship candidate 3
-    C4 = 4,                             # Fellowship candidate 4
-
-class AccomplishmentsEnum(Enum):
+class Accomplishments(Enum):
 
     FULFILLED_ALL_REQUIREMENTS = 1,     # More accomplishments could be defined and used by the voting algorithm...
 
@@ -15,21 +8,22 @@ class FellowshipCandidate:
 
     def __init__(self, id, accomplishments = []):
 
-        if not id in iter(FellowshipCandidateEnum):
-            raise Exception("Id must one of the IDs defined by the FellowshipCandidateEnum!")
         self.id = id
 
         # The candidate's proven accomplishments. Must refer to the Accomplishments enum. Ignore invalid accomplishments.
-        self.accomplishments = [acc for acc in accomplishments if acc in iter(AccomplishmentsEnum)]
+        self.accomplishments = [acc for acc in accomplishments if acc in iter(Accomplishments)]
+    
+    def __eq__(self, other):
+        return (self.id == other.id)
 
 # The eligible candidates.
 # For now, let's just assume that they all fulfill the requirements.
 # In future, a list of a candidate's proven accomplishments could be used by a voting algorithm.
 CANDIDATES = {
-    "C1": FellowshipCandidate(FellowshipCandidateEnum.C1, [AccomplishmentsEnum.FULFILLED_ALL_REQUIREMENTS]),
-    "C2": FellowshipCandidate(FellowshipCandidateEnum.C2, [AccomplishmentsEnum.FULFILLED_ALL_REQUIREMENTS]),
-    "C3": FellowshipCandidate(FellowshipCandidateEnum.C3, [AccomplishmentsEnum.FULFILLED_ALL_REQUIREMENTS]),
-    "C4": FellowshipCandidate(FellowshipCandidateEnum.C4, [AccomplishmentsEnum.FULFILLED_ALL_REQUIREMENTS]),
+    "C1": FellowshipCandidate("C1", [Accomplishments.FULFILLED_ALL_REQUIREMENTS]),
+    "C2": FellowshipCandidate("C2", [Accomplishments.FULFILLED_ALL_REQUIREMENTS]),
+    "C3": FellowshipCandidate("C3", [Accomplishments.FULFILLED_ALL_REQUIREMENTS]),
+    "C4": FellowshipCandidate("C4", [Accomplishments.FULFILLED_ALL_REQUIREMENTS]),
 }
 
 class Voter():
@@ -53,7 +47,6 @@ class Voter():
         # Candidates are not allowed to vote (?)
         self.isCandidate = isCandidate
         
-
 class NFT(Enum):
 
     FUNDA_1 = 1                         # TE Fundamentals module 1

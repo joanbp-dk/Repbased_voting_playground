@@ -11,7 +11,7 @@ def popularity_contest(sample):
 
     votecount = {}
     for k in CANDIDATES.keys():
-        votecount[k] = len([voter for voter in sample if voter.vote is CANDIDATES[k]])
+        votecount[k] = len([voter for voter in sample if voter.vote == CANDIDATES[k]])
     
     return max(votecount, key = votecount.get)
 
