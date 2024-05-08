@@ -16,7 +16,7 @@ class FellowshipCandidate:
     def __eq__(self, other):
         return (self.id == other.id)
 
-class Voter():
+class Voter:
 
     def __init__(self, vote = None, nfts = [], hasTeaAccount = True, hasWalletConnected = True, isCandidate = False):
 
