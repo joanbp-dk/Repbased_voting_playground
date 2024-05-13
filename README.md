@@ -4,8 +4,7 @@
 
 ## Overview
 
-This project is intended to be used as part of the TokenEngineering Academy's Reputation Weighted Voting course, 
-the goal of which it is to come up with a suitable reputation based voting algorithm for electing a winner among four pre-selected fellowship candidates.
+This is my personal branch for experiments related to the TokenEngineering Academy's Reputation Weighted Voting course, the goal of which it is to come up with a suitable reputation based voting algorithm for electing a winner among four pre-selected fellowship candidates.
 
 ...But feel free to play around with the code on your own machine, and use it for any constructive purpose you can think of. 
 
@@ -29,11 +28,15 @@ the goal of which it is to come up with a suitable reputation based voting algor
 
   This is where the action happens.
 
-  For now, only one voting algorithm has been implemented, as a proof of concept:
-  A quick-and-dirty popularity contest which ignores any notion of reputation.
+* **[Concept.txt](Concept.txt)**
 
-  The next step will be to come up with other - better - algorithms.
+  This file explains my voting concept.
+
+* **[Voting.pdf](Voting.pdf)**
+
+  A visual representation of the voting design.
+
 
 ## How to use
 
-Running *Vote.py* in a Python interpreter will cause it to fetch a sample of test votes, perform a mock popularity contest and announce a winner.
+Running *Vote.py* in a Python interpreter will cause it to fetch a sample of test votes, run my voting algorithm on the data and announce a winner.

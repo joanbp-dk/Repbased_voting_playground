@@ -1,0 +1,126 @@
+
+
+Basic idea:
+
+A voter is asked to vote for exactly one candidate. This keeps the voting interface simple.
+
+Behind the scenes, however, voters are seen as belonging to different groups of stakeholders.
+
+Each group distributes a certain number of points among the candidates according to the group's rules.
+
+A candidate's final score is the sum of points that they receive from all stakeholder groups.
+
+The winner is the candidate with the highest final score.
+
+
+
+Stakeholder groups:
+
+These are groups of voters with different qualifications and perspectives. 
+
+A voter belongs to a group when he holds one or more NFTs required for membership.
+A voter may be part of several groups.
+A voter gets to influence the points distributed by every group for which he qualifies.
+
+- The experts: Fellowship committee members and TE speakers
+- The intellectuals: Those who have studied and passed one or more TE Fundamentals exams
+- The active participants: Those who have actively participated in the live tracks of this study season
+- The general community: Anyone who holds at least one TE Academy NFT
+
+
+
+Suggested parameterization:
+
+The fellowship candidates were chosen by the fellowship committee. 
+As such, the experts have already had huge influence on the outcome of the election, 
+and all of the candidates can be expected to be good candidates.
+
+To keep things simple, I suggest that "the experts", "the intellectuals", "the active participants" and 
+"the general community" each distribute 25% of the available points according to these rules:
+
+The experts: 
+
+    These are highly qualified people who likely know all candidates and appreciate their contributions.
+    They are aware of the responsibility that comes with their special voting power.
+
+    A group of peers calls for a principle of one person, one vote. 
+    Thus, expert points are distributed according to the distribution of the experts' individual votes.
+
+The intellectuals:
+
+    These are students with at least some basic knowledge of TE theory (1-6 TE Fundamentals NFTs).
+    They don't necessarily know the candidates.
+    
+    Each group member's vote is given a weight of 1-6 depending on the number of TEF NFTs they hold.
+    Thus, those who have studied more gets a bigger say in how the group's points are distributed.
+
+The active participants:
+
+    These are active students who took part in one or more live tracks and have proof of knowledge/skill.
+    Some of them participated in sessions with fellowship candidates.
+
+    Starting from 0, each group member's vote is given a weight w that is the sum of:
+
+        +1 for each NFT from live track 1-4 (not lead by a candidate)
+        +1 for a Wonderverse top 50 NFT
+        +3 for each NFT from live track 5-8 (lead by a candidate) 
+
+The general community:
+
+    This is everyone who holds at least one TEA NFT.
+    Some may have only registered for the study season; some are fellowship committee members.
+
+    This group distributes points as in a simple popularity contest:
+    One person, one vote - just like the experts, in fact, but for very different reasons.
+
+
+
+What are the pros of this algorithm?
+
+- Simple voting task and voting interface: 
+  Each voter just has to pick one candidate.
+
+- Reputation based: 
+  Highly qualified voters influence more groups AND their vote is assigned more weight within some groups.
+
+- Incentive to vote:
+  Anyone who holds at least one TEA NFT is elligible to vote, and all (legitimate) votes count.
+
+- Incentive to learn:
+  More TEA NFTs = greater voting power. This gives people an incentive to learn and obtain NFTs.
+
+- Intuitive model: 
+  It is built around natural stakeholder groups with different qualifications and perspectives.
+  This should make it clear to all voters where they fit in the system, based on their merits.
+
+- Parameterization on two levels:
+  The design controls a) the power of each stakeholder group, and b) an individual's power within a group.
+
+
+
+What are the cons of this algorithm?
+
+- Slightly complex behind-the-scenes analysis of votes: 
+  Some may find it hard to understand. Careful testing needed to ensure that it works as expected.
+
+- A tie is possible:
+  If two candidates receive the same number of aggregate points - WHAT SHOULD HAPPEN THEN?
+
+
+
+Other notes:
+
+For an optimal result, an effort should be made to clearly communicate these things to all potential voters:
+
+- The objectives of the vote
+- Who the candidates are and how they have each contributed to the field of token engineering
+- The voting algorithm design
+- How to vote
+- How to get more voting power
+
+All elligible voters are people who have shown interest in TE Academy (at least enough to sign up for the study season).
+Rather than excluding lesser qualified voters or giving outsized weight to the votes of the experts,
+it would make sense to be proactive and try to make every voter a qualified voter.
+
+
+

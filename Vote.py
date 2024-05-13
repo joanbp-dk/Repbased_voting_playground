@@ -3,39 +3,14 @@ from Definitions import *
 
 CANDIDATES = Testdata.CANDIDATES
 
-# A quick and dirty voting algorithm.
-# Counts all votes and returns the id of the candidate who got the most votes.
-# In case of a tie, the winning candidate with the lowest id will be returned.
-# This algorithm completely ignores the proven qualifications of both candidates and voters.
-def popularity_contest(sample):
+EXPERTS_WEIGHT = 1
+INTELLECTUALS_WEIGHT = 1
+PARTICIPANTS_WEIGHT = 1
+COMMUNITY_WEIGHT = 1
 
-    votecount = {}
-    for k in CANDIDATES.keys():
-        votecount[k] = len([voter for voter in sample if voter.vote == CANDIDATES[k]])
-    
-    return votecount
-
-def ask_the_dictator(sample):
-
-    (dictator, dictator_points) = (None, 0)
-
-    # Assign expertise points based on voters' NFTs and appoint the voter with most points as dictator
-    for voter in sample:
-        points = 0
-        for nft in voter.nfts:
-            if nft in [NFT.FELLOWSHIP_COMM]: points += 50
-            elif nft in [NFT.ETHCC_TE_2023_BARCAMP_SPEAKER, NFT.STUDY_SEASON_SPEAKER]: points += 10
-            elif nft in iter(NFT): points += 1
-
-        if points > dictator_points:
-            dictator = voter
-            dictator_points = points
-
-    cpoints = {c: 0 for c in CANDIDATES}
-    cpoints[dictator.vote.id] = 100
-
-    return cpoints
-
+# The experts are highly qualified peers.
+# They are fellowship committee members, ETHCC TE 2023 / Barcamp speakers, or TE Study Season speakers.
+# They follow a principle of one person, one vote.
 def ask_the_experts(sample):
 
     experts = set()
@@ -44,25 +19,29 @@ def ask_the_experts(sample):
             if nft in [NFT.FELLOWSHIP_COMM, NFT.ETHCC_TE_2023_BARCAMP_SPEAKER, NFT.STUDY_SEASON_SPEAKER]:
                 experts.add(voter)
     
-    print(experts)
-    
-    return popularity_contest(experts)
+    return ask_the_community(experts)
 
-def ask_the_theoreticians(sample):
+# The intellectuals are students who hold one or more TE Fundamentals NFT.
+# The weight assigned to each vote is proportional to the number of TE Fundamentals NFTs the voter holds.
+def ask_the_intellectuals(sample):
     
     cpoints = {c: 0 for c in CANDIDATES}
 
     for voter in sample:
         weight = 0
         for nft in voter.nfts:
-            if nft in [NFT.FELLOWSHIP_COMM, NFT.ETHCC_TE_2023_BARCAMP_SPEAKER, NFT.STUDY_SEASON_SPEAKER, 
-                       NFT.FUNDA_1, NFT.FUNDA_2, NFT.FUNDA_3, NFT.FUNDA_4, NFT.FUNDA_5, NFT.FUNDA_LEGACY]:
+            if nft in [NFT.FUNDA_1, NFT.FUNDA_2, NFT.FUNDA_3, NFT.FUNDA_4, NFT.FUNDA_5, NFT.FUNDA_LEGACY]:
                 weight += 1
         cpoints[voter.vote.id] += weight
 
     return cpoints
 
-def ask_the_participants(sample):
+# The active participants are students who have gained knowledge and experience during TE Study Season 2024.
+# The weight assigned to each vote depends on the Study Season NFTs of the voter:
+# Each NFT from live track 1-4 (not lead by a candidate) counts for 1.
+# Each NFT from live track 5-8 (lead by a candidate) counts for 3.
+# A Wonderverse top 50 NFT counts for 1.
+def ask_the_active_participants(sample):
 
     cpoints = {c: 0 for c in CANDIDATES}
 
@@ -73,29 +52,67 @@ def ask_the_participants(sample):
                 weight += 1
             elif nft in [NFT.LIVE_TRACK_5, NFT.LIVE_TRACK_6, NFT.LIVE_TRACK_7, NFT.LIVE_TRACK_8]:
                 weight += 5
+            elif nft is NFT.WONDERVERSE_TOP50:
+                weight += 1
         cpoints[voter.vote.id] += weight
 
     return cpoints
 
-def points_to_percentages(cpoints):
+# The community is a large and very diverse group of people.
+# All voters are treated equally: One person > one vote. No weights are applied.
+def ask_the_community(sample):
 
-    total = sum(cpoints.values())
-    return {c: round(100 * cpoints[c] / total) for c in cpoints}
+    votecount = {}
+    for k in CANDIDATES.keys():
+        votecount[k] = len([voter for voter in sample if voter.vote == CANDIDATES[k]])
+    
+    return votecount
 
+def vote(sample):
+
+    experts = normalize(ask_the_experts(sample))
+    intellectuals = normalize(ask_the_intellectuals(sample))
+    participants = normalize(ask_the_active_participants(sample))
+    community = normalize(ask_the_community(sample))
+
+    print("\nExperts: " + str(experts))
+    print("Intellectuals: " + str(intellectuals))
+    print("Participants: " + str(participants))
+    print("Community: " + str(community))
+    print ("\n---\n")
+
+    aggregate = {c: 0 for c in CANDIDATES}
+
+    for c in experts:
+        aggregate[c] += (experts[c]*EXPERTS_WEIGHT)
+
+    for c in intellectuals:
+        aggregate[c] += (intellectuals[c]*INTELLECTUALS_WEIGHT)
+
+    for c in participants:
+        aggregate[c] += (participants[c]*PARTICIPANTS_WEIGHT)
+
+    for c in community:
+        aggregate[c] += (community[c]*COMMUNITY_WEIGHT)
+
+    return normalize(aggregate)
+
+
+# Converts a set of points into percentages to allow aggregation across several sets of points.
+def normalize(points):
+
+    total = sum(points.values())
+    return {c: round(100 * points[c] / total) for c in points}
+
+# NB: IN CASE OF A TIE THIS FUNCTION RETURNS THE CANDIDATE IT ENCOUNTERS FIRST IN THE INPUT!
+def declare_winner(points):
+    return max(points, key = points.get)
 
 # Run the test
-votes = Testdata.getSample()            # Fetch the list of votes - ie. voters with preferred candidates and personal qualifications
+voters = Testdata.getSample()
+aggregate_vote = vote(voters)
 
-dictator = points_to_percentages(ask_the_dictator(votes))
-experts = points_to_percentages(ask_the_experts(votes))
-theos = points_to_percentages(ask_the_theoreticians(votes))
-participants = points_to_percentages(ask_the_participants(votes))
-pop = points_to_percentages(popularity_contest(votes))
+print(aggregate_vote)
 
-print("Dictator: " + str(dictator))
-print("Experts: " + str(experts))
-print("Theoreticians: " + str(theos))
-print("Participants: " + str(participants))
-print("---")
-print("Everyone (popularity contest): " + str(pop))
-
+winner = declare_winner(aggregate_vote)
+print("\nAnd the winner is: " + str(winner))
