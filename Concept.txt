@@ -8,7 +8,7 @@ Behind the scenes, however, voters are seen as belonging to different groups of 
 
 Each group distributes a certain number of points among the candidates according to the group's rules.
 
-A candidate's final score is the sum of points that they receive from all stakeholder groups.
+A candidate's final score is the (weighted) sum of points that they receive from all stakeholder groups.
 
 The winner is the candidate with the highest final score.
 
