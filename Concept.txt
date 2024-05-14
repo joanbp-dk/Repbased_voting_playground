@@ -6,9 +6,9 @@ A voter is asked to vote for exactly one candidate. This keeps the voting interf
 
 Behind the scenes, however, voters are seen as belonging to different groups of stakeholders.
 
-Each group distributes a certain number of points among the candidates according to the group's rules.
+Each group distributes points among the candidates according to the group's rules.
 
-A candidate's final score is the (weighted) sum of points that they receive from all stakeholder groups.
+A candidate's final score is the weighted sum of points that they receive from all stakeholder groups.
 
 The winner is the candidate with the highest final score.
 
@@ -36,7 +36,7 @@ As such, the experts have already had huge influence on the outcome of the elect
 and all of the candidates can be expected to be good candidates.
 
 To keep things simple, I suggest that "the experts", "the intellectuals", "the active participants" and 
-"the general community" each distribute 25% of the available points according to these rules:
+"the general community" are given equal weight (25% each) in the final outcome, and that they distribute points according to the following rules:
 
 The experts: 
 
