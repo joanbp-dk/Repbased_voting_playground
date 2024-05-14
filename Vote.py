@@ -70,10 +70,12 @@ def ask_the_community(sample):
 
 def vote(sample):
 
-    experts = normalize(ask_the_experts(sample))
-    intellectuals = normalize(ask_the_intellectuals(sample))
-    participants = normalize(ask_the_active_participants(sample))
-    community = normalize(ask_the_community(sample))
+    eligible = remove_candidates(sample)   # Candidates are not allowed to vote!
+
+    experts = normalize(ask_the_experts(eligible))
+    intellectuals = normalize(ask_the_intellectuals(eligible))
+    participants = normalize(ask_the_active_participants(eligible))
+    community = normalize(ask_the_community(eligible))
 
     print("\nExperts: " + str(experts))
     print("Intellectuals: " + str(intellectuals))
@@ -97,6 +99,16 @@ def vote(sample):
 
     return normalize(aggregate)
 
+
+def remove_candidates(voters):
+
+    non_candidates = []
+
+    for voter in voters:
+        if not voter.isCandidate:
+            non_candidates.append(voter)
+    
+    return non_candidates
 
 # Converts a set of points into percentages to allow aggregation across several sets of points.
 def normalize(points):

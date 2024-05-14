@@ -77,50 +77,58 @@ The general community:
 
 What are the pros of this algorithm?
 
-- Simple voting task and voting interface: 
+- Simple voting task and simple voting interface: 
   Each voter just has to pick one candidate.
 
 - Reputation based: 
   Highly qualified voters influence more groups AND their vote is assigned more weight within some groups.
+  In particular, TE experts and students with an NFT from a candidate's live track get extra voting power.
+
+- Voter diversity:
+  Voter diversity and legitimacy is ensured by explicitly giving different stakeholder groups a say
+  in the final outcome. This will prevent any single group of people from over-determining the outcome.
 
 - Incentive to vote:
-  Anyone who holds at least one TEA NFT is elligible to vote, and all (legitimate) votes count.
+  Anyone who is not a candidate and who holds at least one TEA NFT is elligible to vote. 
+  All eligible votes count - at least in the general community stakeholder group vote.
 
 - Incentive to learn:
-  More TEA NFTs = greater voting power. This gives people an incentive to learn and obtain NFTs.
+  More TEA NFTs = greater voting power. This gives people an incentive to study and obtain NFTs.
 
 - Intuitive model: 
-  It is built around natural stakeholder groups with different qualifications and perspectives.
-  This should make it clear to all voters where they fit in the system, based on their merits.
+  The voting algorithm is based on natural stakeholder groups with different qualifications and perspectives.
+  This should make it clear to all voters how they fit in the system, based on their merits.
 
 - Parameterization on two levels:
   The design controls a) the power of each stakeholder group, and b) an individual's power within a group.
+  This gives a lot of flexibility to adjust the details while keeping the overall concept clean.
 
 
 
 What are the cons of this algorithm?
 
 - Slightly complex behind-the-scenes analysis of votes: 
-  Some may find it hard to understand. Careful testing needed to ensure that it works as expected.
+  Careful testing is needed to ensure that it works as expected.
 
-- A tie is possible:
-  If two candidates receive the same number of aggregate points - WHAT SHOULD HAPPEN THEN?
+- A tie is unlikely, but possible:
+  In the event that two candidates receive the same number of aggregate points - WHAT SHOULD HAPPEN THEN?
 
 
 
 Other notes:
 
-For an optimal result, an effort should be made to clearly communicate these things to all potential voters:
+For an optimal result, effort should be made to clearly communicate these things to all potential voters:
 
 - The objectives of the vote
+- The concept of reputation-based voting
 - Who the candidates are and how they have each contributed to the field of token engineering
 - The voting algorithm design
 - How to vote
 - How to get more voting power
 
-All elligible voters are people who have shown interest in TE Academy (at least enough to sign up for the study season).
-Rather than excluding lesser qualified voters or giving outsized weight to the votes of the experts,
-it would make sense to be proactive and try to make every voter a qualified voter.
+All elligible voters have shown interest in TE Academy (at least enough to sign up for the study season).
+Rather than excluding lesser qualified voters or giving extreme weight to the votes of the experts,
+it makes sense to be proactive and help every voter become better qualified.
 
 
 
