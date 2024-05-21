@@ -6,9 +6,9 @@ A voter is asked to vote for exactly one candidate. This keeps the voting interf
 
 Behind the scenes, however, voters are seen as belonging to different groups of stakeholders.
 
-Each group distributes a certain number of points among the candidates according to the group's rules.
+Each group distributes points among the candidates according to the group's rules.
 
-A candidate's final score is the (weighted) sum of points that they receive from all stakeholder groups.
+A candidate's final score is the weighted sum of points that they receive from all stakeholder groups.
 
 The winner is the candidate with the highest final score.
 
@@ -22,9 +22,10 @@ A voter belongs to a group when he holds one or more NFTs required for membershi
 A voter may be part of several groups.
 A voter gets to influence the points distributed by every group for which he qualifies.
 
-- The experts: Fellowship committee members and TE speakers
-- The intellectuals: Those who have studied and passed one or more TE Fundamentals exams
-- The active participants: Those who have actively participated in the live tracks of this study season
+- The experts: Fellowship committee members, TEA course authors and TE speakers
+- The intellectuals: Those who have studied and passed one or more TEA exams, or attended Barcamp
+- The active participants: Those who have participated in the study season live tracks,
+  hosted study groups or helped make TEA and TE Fundamentals a reality 
 - The general community: Anyone who holds at least one TE Academy NFT
 
 
@@ -36,7 +37,8 @@ As such, the experts have already had huge influence on the outcome of the elect
 and all of the candidates can be expected to be good candidates.
 
 To keep things simple, I suggest that "the experts", "the intellectuals", "the active participants" and 
-"the general community" each distribute 25% of the available points according to these rules:
+"the general community" are given equal weight (25% each) in the final outcome, and that they distribute 
+points according to the following rules:
 
 The experts: 
 
@@ -48,10 +50,15 @@ The experts:
 
 The intellectuals:
 
-    These are students with at least some basic knowledge of TE theory (1-6 TE Fundamentals NFTs).
+    These are students with at least some basic knowledge of TE theory.
     They don't necessarily know the candidates.
     
-    Each group member's vote is given a weight of 1-6 depending on the number of TEF NFTs they hold.
+    Starting from 0, each group member's vote is given a weight w that is the sum of:
+
+      +3 for each passed TE Fundamentals module
+      +2 for Barcamp attendance
+      +1 for having passed the exam of the NFT-based reputation course
+
     Thus, those who have studied more gets a bigger say in how the group's points are distributed.
 
 The active participants:
@@ -61,9 +68,10 @@ The active participants:
 
     Starting from 0, each group member's vote is given a weight w that is the sum of:
 
-        +1 for each NFT from live track 1-4 (not lead by a candidate)
-        +1 for a Wonderverse top 50 NFT
         +3 for each NFT from live track 5-8 (lead by a candidate) 
+        +1 for each NFT from live track 1-4 (not lead by a candidate)
+        +1 for each study group host NFT
+        +1 for having contributed to making TEA/TEF a reality
 
 The general community:
 
@@ -102,7 +110,9 @@ What are the pros of this algorithm?
 - Parameterization on two levels:
   The design controls a) the power of each stakeholder group, and b) an individual's power within a group.
   This gives a lot of flexibility to adjust the details while keeping the overall concept clean.
-
+  It also allows us to directly and explicitly control what we want, namely that a) certain *voters* have
+  extra voting power, and b) lesser qualified *groups of voters* don't overpower more qualified groups,
+  even if they are much more numerous.
 
 
 What are the cons of this algorithm?
@@ -129,6 +139,3 @@ For an optimal result, effort should be made to clearly communicate these things
 All elligible voters have shown interest in TE Academy (at least enough to sign up for the study season).
 Rather than excluding lesser qualified voters or giving extreme weight to the votes of the experts,
 it makes sense to be proactive and help every voter become better qualified.
-
-
-

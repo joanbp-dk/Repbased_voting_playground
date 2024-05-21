@@ -1,32 +1,14 @@
 from enum import Enum
 
-class Accomplishments(Enum):
-
-    FULFILLED_ALL_REQUIREMENTS = 1,     # More accomplishments could be defined and used by the voting algorithm...
-
-class FellowshipCandidate:
-
-    def __init__(self, id, accomplishments = []):
-
-        self.id = id
-
-        # The candidate's proven accomplishments. Must refer to the Accomplishments enum. Ignore invalid accomplishments.
-        self.accomplishments = [acc for acc in accomplishments if acc in iter(Accomplishments)]
-    
-    def __eq__(self, other):
-        return (self.id == other.id)
-
 class Voter:
 
     def __init__(self, vote = None, nfts = [], hasTeaAccount = True, hasWalletConnected = True, isCandidate = False):
 
-        # The candidate that the voter prefers. Must be a valid fellowship candidate.
-        if vote is None or not isinstance(vote, FellowshipCandidate):
-            raise Exception("Invalid vote!")        
+        # The candidate that the voter prefers.
         self.vote = vote
 
-        # List of NFTs that this voter holds. Must refer to the NFT enum. Ignore invalid NFTs.
-        self.nfts = [nft for nft in nfts if nft in iter(NFT)] 
+        # List of NFTs that this voter holds.
+        self.nfts = nfts 
 
         # Voter has an TEA account. Must be True to participate in voting.
         self.hasTeaAccount = hasTeaAccount
@@ -37,25 +19,40 @@ class Voter:
         # Candidates are not allowed to vote (?)
         self.isCandidate = isCandidate
         
-class NFT(Enum):
+class NFT:
 
-    FUNDA_1 = 1                         # TE Fundamentals module 1
-    FUNDA_2 = 2                         # TE Fundamentals module 2
-    FUNDA_3 = 3                         # TE Fundamentals module 3
-    FUNDA_4 = 4                         # TE Fundamentals module 4
-    FUNDA_5 = 5                         # TE Fundamentals module 5
-    FUNDA_LEGACY = 6                    # TE Fundamentals legacy NFT
-    FELLOWSHIP_COMM = 7,                # Fellowship Committee member
-    STUDY_SEASON_SPEAKER = 8,           # Study Season speaker
-    ETHCC_TE_2023_BARCAMP_SPEAKER = 9,  # Speaker at EthCC TE 2023/Barcamp
-    STUDY_SEASON_REGISTRATION = 10,     # Registered to Study Season
-    WONDERVERSE_TOP50 = 11,             # Made it into top 50 on the Wonderverse leaderboard
-    LIVE_TRACK_1 = 12,                  # Participated in Study Season live track 1
-    LIVE_TRACK_2 = 13,                  # Participated in Study Season live track 2
-    LIVE_TRACK_3 = 14,                  # Participated in Study Season live track 3
-    LIVE_TRACK_4 = 15,                  # Participated in Study Season live track 4
-    LIVE_TRACK_5 = 16,                  # Participated in Study Season live track 5 (Offered by candidate)
-    LIVE_TRACK_6 = 17,                  # Participated in Study Season live track 6 (Offered by candidate)
-    LIVE_TRACK_7 = 18,                  # Participated in Study Season live track 7 (Offered by candidate)
-    LIVE_TRACK_8 = 19,                  # Participated in Study Season live track 8 (Offered by candidate)
+    FUNDA_1_v1 = 'TE FUNDAMENTALS – MODULE 1 of 5 – VERSION 1 – 2022'          # TE Fundamentals module 1
+    FUNDA_1_v2 = 'TE FUNDAMENTALS – MODULE 1 of 5 – VERSION 2 – 2023'          # TE Fundamentals module 1
+    FUNDA_2_v1 = 'TE FUNDAMENTALS – MODULE 2 of 5 – VERSION 1 – 2022'          # TE Fundamentals module 2
+    FUNDA_2_v2 = 'TE FUNDAMENTALS – MODULE 2 of 5 – VERSION 2 – 2023'          # TE Fundamentals module 2
+    FUNDA_3_v1 = 'TE FUNDAMENTALS – MODULE 3 of 5 – VERSION 1 – 2022'          # TE Fundamentals module 3
+    FUNDA_3_v2 = 'TE FUNDAMENTALS – MODULE 3 of 5 – VERSION 2 – 2023'          # TE Fundamentals module 3
+    FUNDA_4_v1 = 'TE FUNDAMENTALS – MODULE 4 of 5 – VERSION 1 – 2022 '         # TE Fundamentals module 4
+    FUNDA_4_v2 = 'TE FUNDAMENTALS – MODULE 4 of 5 – VERSION 2 – 2023'          # TE Fundamentals module 4
+    FUNDA_5_v1 = 'TE FUNDAMENTALS – MODULE 5 of 5 – VERSION 1 – 2022'          # TE Fundamentals module 5
+    FUNDA_5_v2 = 'TE FUNDAMENTALS – MODULE 5 of 5 – VERSION 2 – 2023'          # TE Fundamentals module 5
+    NFT_BASED_REP = 'NFT-based Reputation in Web3 – V1 – 2023'                 # TE course on NFT based reputation
+    STUDY_GROUP_HOST_1 = 'TE FUNDAMENTALS STUDY GROUP HOST 2022/2023'          # Study group host
+    STUDY_GROUP_HOST_2 = 'TE FUNDAMENTALS STUDY GROUP HOST C2 2022/2023'       # Study group host, two cycles
+    STUDY_GROUP_HOST_3 = 'TE360 STUDY GROUP HOST 2022'                         # Study group host
+    FUNDA_COURSE_AUTHOR = 'TE FUNDAMENTALS COURSE AUTHOR – LAUNCH 2022'        # TE Fundamentals course author
+    FUNDA_WE_MADE_IT = 'TE Fundamentals "We made it"'                          # People who made TEA / TE Fundamentals
+    ETHCC_SPEAKER_1 = 'Token Engineering @EthCC Paris 2023 – Speaker'          # Speaker at EthCC
+    ETHCC_SPEAKER_2 = 'Token Engineering @EthCC Paris 2024 - Speaker'          # Speaker at EthCC
+    BARCAMP_SPEAKER = 'Token Engineering Barcamp - Speaker - Paris 2023\u2028' # Speaker at Barcamp
+    BARCAMP_ATTENDEE = 'Token Engineering Barcamp - Paris 2023\u2028'          # Attendee at Barcamp
+    BARCAMP_VOLUNTEER = 'Token Engineering Barcamp - Team - Paris 2023\u2028'  # Volunteer at Barcamp
+    STUDY_SEASON_REGISTRATION = 'Study season registration'                    # Registered to Study Season
+    LIVE_TRACK_1 = 'Live track 1'                                              # Participated in Study Season live track 1
+    LIVE_TRACK_2 = 'Live track 2'                                              # Participated in Study Season live track 2
+    LIVE_TRACK_3 = 'Live track 3'                                              # Participated in Study Season live track 3
+    LIVE_TRACK_4 = 'Live track 4'                                              # Participated in Study Season live track 4
+    LIVE_TRACK_5 = 'Live track 5'                                              # Participated in Study Season live track 5 (Offered by candidate)
+    LIVE_TRACK_6 = 'Live track 6'                                              # Participated in Study Season live track 6 (Offered by candidate)
+    LIVE_TRACK_7 = 'Live track 7'                                              # Participated in Study Season live track 7 (Offered by candidate)
+    LIVE_TRACK_8 = 'Live track 8'                                              # Participated in Study Season live track 8 (Offered by candidate)
+    FELLOWSHIP_COMM = 'Fellowship committee member'                            # Fellowship Committee member
+    STUDY_SEASON_SPEAKER = 'Study season speaker'                              # Study Season speaker
+    FELLOWSHIP_CANDIDATE = 'Fellowship candidate'                              # Fellowship candidate
+    FELLOWSHIP_WINNER = 'Fellowship winner'                                    # Fellowship winner
 
