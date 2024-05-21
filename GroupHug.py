@@ -1,7 +1,7 @@
-"""group_hug.py
+"""GroupHug.py
 
 Implements a group based calculation method, where each stakeholder group has 
-a weight and rules by which points are distributed . 
+a weight and rules by which points are distributed. 
 """
 
 from Testdata import *
