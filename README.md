@@ -8,35 +8,35 @@ This is my personal branch for experiments related to the TokenEngineering Acade
 
 ...But feel free to play around with the code on your own machine, and use it for any constructive purpose you can think of. 
 
+
 ## Files
-
-* **[Definitions.py](Definitions.py)**
-  
-  Class definitions for voters, candidates and NFTs that prove a voter's qualifications.
-  The list of available NFTs is taken from [this presentation](https://docs.google.com/presentation/d/1fqsmqvMTWeL61E2OMZIbWVfufKEIKJCkYOp6sth6K_Q/edit#slide=id.g1ff3e012012_0_0).
-  
-  In future, certain accomplishments may also be attributed to each candidate. A basic structure for this is hinted at, but not yet fully built out in the code.
-
-  The idea is that the final voting mechanism (yet to be designed) may use knowledge of voters' NFTs and candidates' accomplishments to find the most 'reputable' candidate.
-
-* **[Testdata.py](Testdata.py)**
-
-  A sample of votes to be used for testing the voting mechanism.
-  In this context, a 'vote' is simply a voter who has a preferred candidate and a list of personal NFTs.
-
-* **[Vote.py](Vote.py)**
-
-  This is where the action happens.
 
 * **[Concept.txt](Concept.txt)**
 
-  This file explains my voting concept.
+  Detailed explanation of the proposed voting concept.
 
 * **[Voting.pdf](Voting.pdf)**
 
   A visual representation of the voting design.
 
+* **[VotingMechanism.py](**
+
+  Abstract class that represents a voting mechanism.
+  By courtesy of @eightarmsninebrains / [basic-voting-calc](https://github.com/eightarmsninebrains/basic-voting-calc).
+
+* **[GroupHug.py](GroupHug.py)**
+
+  Implementation of the voting mechanism. This is where the action happens.
+
+* **[Definitions.py](Definitions.py)**
+
+  Basic structures used by the design.
+
+* **[Testdata.py](Testdata.py)**
+
+  A sample of votes to be used for testing the voting mechanism.
+
 
 ## How to use
 
-Running *Vote.py* in a Python interpreter will cause it to fetch a sample of test votes, run my voting algorithm on the data and announce a winner.
+Running *[GroupHug.py](GroupHug.py)* in a Python interpreter will cause it to fetch a sample of test votes, run the proposed voting algorithm on the data and announce a winner.
