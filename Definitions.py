@@ -1,5 +1,3 @@
-from enum import Enum
-
 class Voter:
 
     def __init__(self, vote = None, nfts = [], hasTeaAccount = True, hasWalletConnected = True, isCandidate = False):
