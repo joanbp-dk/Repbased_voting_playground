@@ -19,7 +19,7 @@ This is my personal branch for experiments related to the TokenEngineering Acade
 
   A visual representation of the voting design.
 
-* **[VotingMechanism.py](**
+* **[VotingMechanism.py](VotingMechanism.py)**
 
   Abstract class that represents a voting mechanism.
   By courtesy of @eightarmsninebrains / [basic-voting-calc](https://github.com/eightarmsninebrains/basic-voting-calc).
