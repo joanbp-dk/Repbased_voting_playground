@@ -1,7 +1,5 @@
 # A playground for trying out voting algorithms
 
-**Last updated** May 5, 2024
-
 ## Overview
 
 This is my personal branch for experiments related to the TokenEngineering Academy's Reputation Weighted Voting course, the goal of which it is to come up with a suitable reputation based voting algorithm for electing a winner among four pre-selected fellowship candidates.
