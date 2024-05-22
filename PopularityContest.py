@@ -33,6 +33,7 @@ class PopularityContest(VotingMechanism):
 
         Returns:
         - str: The winning candidate.
+        - dict: The result for each candidate.
         """
 
         # Extract and convert input to internal format
@@ -44,7 +45,9 @@ class PopularityContest(VotingMechanism):
             extracted_voters.append(Voter(choice, nfts))
         
         # Analyze election results
-        return self.popularity_contest(extracted_candidates, extracted_voters)
+        votecount = self.popularity_contest(extracted_candidates, extracted_voters)
+        winner = max(votecount, key = votecount.get)
+        return (winner, votecount)
 
 
     # A quick and dirty voting algorithm.
@@ -57,12 +60,13 @@ class PopularityContest(VotingMechanism):
         for c in candidates:
             votecount[c] = len([voter for voter in voters if voter.vote == c])
         
-        return max(votecount, key = votecount.get)
+        return votecount
 
 
 # Run test
 
 (voters, voter_choices) = getSample()
 mechanism = PopularityContest()
-winner = mechanism.calculate(voters, voter_choices)
+(winner, votecount) = mechanism.calculate(voters, voter_choices)
 print("\nAnd the winner is: " + str(winner))
+print("\nDetailed result: " + str(votecount))
