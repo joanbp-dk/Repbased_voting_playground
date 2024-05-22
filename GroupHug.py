@@ -51,8 +51,9 @@ class GroupHug(VotingMechanism):
         
         # Analyze election results
         aggregate_vote = self.vote(extracted_candidates, extracted_voters)
+        winner = self.declare_winner(aggregate_vote)
 
-        return self.declare_winner(aggregate_vote)
+        return (winner, aggregate_vote)
 
 
     # The experts are highly qualified peers.
@@ -188,7 +189,6 @@ class GroupHug(VotingMechanism):
             aggregate[c] += (community[c]*COMMUNITY_WEIGHT)
 
         result = normalize(aggregate)
-        print(str_dict(result))
 
         return result
 
@@ -197,11 +197,3 @@ class GroupHug(VotingMechanism):
     def declare_winner(self, points):
         return max(points, key = points.get)
 
-
-
-# Run test
-
-(voters, voter_choices) = getSample()
-mechanism = GroupHug()
-winner = mechanism.calculate(voters, voter_choices)
-print("\nAnd the winner is: " + str(winner))
