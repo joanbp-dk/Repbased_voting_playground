@@ -39,6 +39,7 @@ class GroupHug(VotingMechanism):
 
         Returns:
         - str: The winning candidate.
+        - dict: The result of each candidate.
         """
 
         # Extract and convert input to internal format
