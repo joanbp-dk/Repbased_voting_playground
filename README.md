@@ -9,6 +9,8 @@ the goal of which it is to come up with a suitable reputation based voting algor
 
 ...But feel free to play around with the code on your own machine, and use it for any constructive purpose you can think of. 
 
+In case you would like to come and see the specific voting design that I have been working on, you can find the most recent version in [this branch](https://github.com/joanbp-dk/Repbased_voting_playground/tree/Jbp_algorithms).
+
 
 ## Files
 
