@@ -164,10 +164,13 @@ class GroupHug(VotingMechanism):
         participants = normalize(self.ask_the_active_participants(candidates, eligible))
         community = normalize(self.ask_the_community(candidates, eligible))
 
-        print("\nExperts: " + str(experts))
-        print("Intellectuals: " + str(intellectuals))
-        print("Participants: " + str(participants))
-        print("Community: " + str(community))
+        def str_dict(d):
+            return str(dict(sorted(d.items())))
+
+        print("\nExperts: " + str_dict(experts))
+        print("Intellectuals: " + str_dict(intellectuals))
+        print("Participants: " + str_dict(participants))
+        print("Community: " + str_dict(community))
         print ("\n---\n")
 
         aggregate = {c: 0 for c in candidates}
@@ -185,7 +188,7 @@ class GroupHug(VotingMechanism):
             aggregate[c] += (community[c]*COMMUNITY_WEIGHT)
 
         result = normalize(aggregate)
-        print(result)
+        print(str_dict(result))
 
         return result
 
