@@ -17,7 +17,7 @@ This is my personal branch for experiments related to the TokenEngineering Acade
 
 * **[Voting.pdf](Voting.pdf)**
 
-  A visual representation of the voting design.
+  A visual overview of the voting design.
 
 * **[VotingMechanism.py](VotingMechanism.py)**
 
@@ -26,7 +26,7 @@ This is my personal branch for experiments related to the TokenEngineering Acade
 
 * **[GroupHug.py](GroupHug.py)**
 
-  Implementation of the voting mechanism. This is where the action happens.
+  Implementation of the voting mechanism. This is where the actual action happens.
 
 * **[Definitions.py](Definitions.py)**
 
@@ -34,9 +34,16 @@ This is my personal branch for experiments related to the TokenEngineering Acade
 
 * **[Testdata.py](Testdata.py)**
 
-  A sample of votes to be used for testing the voting mechanism.
+  A sample of votes that may be used for testing the voting mechanism. Mostly just intended to give an example. Define your own samples!
 
+* **[Test.py](Test.py)**
+
+  A small example test to show how to use the mechanism.
+
+* **[Proofs.txt](Proofs.txt)**
+
+  Arguments for the soundness of the design. More may be added when good questions come up.
 
 ## How to use
 
-Running *[GroupHug.py](GroupHug.py)* in a Python interpreter will cause it to fetch a sample of test votes, run the proposed voting algorithm on the data and announce a winner.
+Running *[Test.py](Test.py)* in a Python interpreter will cause it to fetch a sample of test votes, run the GroupHug algorithm on the data and announce a winner.
