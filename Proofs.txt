@@ -1,0 +1,49 @@
+Q: Using the GroupHug mechanism, will belonging to multiple stakeholder groups 
+   always be an advantage - or at least not a disadvantage - to a voter?
+
+A: Yes. 
+
+        Argument:
+
+        1) Let's take the example of a voter (V) who belongs to some group (G).
+           V has voted for his preferred candidate (Cp). 
+
+           G will assign a positive, not 0, weight (w) to V's vote.
+
+                If G is the group of experts or the community, 
+                all group members' votes are considered equal, so w is always 1.
+
+                If G is the group of intellectuals or the group of active participants,
+                w is 1 or more for any group member as every group members per definition
+                holds at least one NFT that considered valuable by the group.
+            
+            G will then aggregate the votes of all group members by summing up
+            the weighted votes for each candidate and normalizing the result as percentages. 
+
+                V's vote will add a positive amount of points to Cp's score, and nothing 
+                to every other candidate's score. Thus, Cp will receive a higher percentage 
+                of the group's collective points than if V had not voted.
+            
+            Therefore, V's vote will contribute positively to the score of his preferred
+            candidate Cp in all of the groups to which V belongs.
+
+        2) In the final step of the GroupHug algorithm, each group inputs a 
+           group vote that assigns a percentage to each of the candidates. 
+
+           The group votes are then aggregated by treating these percentages as points
+           and multiplying them by a positive, not 0, weight assigned to the group, then
+           summing up the scores for each candidate across all groups 
+           and finally normalizing the result back to percentages.
+
+           By this procedure, a higher score assigned to the candidate Cp by group G 
+           will always result in a higher final score for Cp.
+
+        3) Because V's vote contributes positively to Cp's score in all of the 
+           groups to which V belongs, and because a higher group score for Cp always
+           results in a higher final score for Cp, belonging to multiple groups
+           will always be an advantage for V.
+
+
+
+
+
