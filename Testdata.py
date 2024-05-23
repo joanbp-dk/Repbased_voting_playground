@@ -1,47 +1,37 @@
+import copy
 from Definitions import *
 
-voters_1 = {
-
-    "V1": {},
-    "V2": {NFT.FELLOWSHIP_COMM: True, 
-           NFT.FUNDA_1_v1: True, 
-           NFT.FUNDA_2_v2: True, 
-           NFT.FUNDA_3_v1: True, 
-           NFT.FUNDA_4_v1: True, 
-           NFT.FUNDA_4_v2: True, 
-           NFT.FUNDA_5_v1: True},
-    "V3": {},
-    "V4": {NFT.FUNDA_1_v2: True},
-    "V5": {NFT.FUNDA_1_v2: True, 
-           NFT.FUNDA_2_v2: True},
-    "V6": {NFT.ETHCC_SPEAKER_1: True},
-    "V7": {NFT.STUDY_SEASON_REGISTRATION: True, 
-           NFT.LIVE_TRACK_4: True},
-    "V8": {NFT.STUDY_SEASON_REGISTRATION: True},
-    "V9": {NFT.STUDY_SEASON_REGISTRATION: True, 
-           NFT.LIVE_TRACK_1: True, 
-           NFT.LIVE_TRACK_2: True},
-    "V10": {NFT.LIVE_TRACK_4: True, 
-            NFT.LIVE_TRACK_5: True},
+# The eligible candidates.
+# For now, let's just assume that they all fulfill the requirements.
+# In future, a list of a candidate's proven accomplishments could be used by a voting algorithm.
+CANDIDATES = {
+    "C1": FellowshipCandidate("C1", [Accomplishments.FULFILLED_ALL_REQUIREMENTS]),
+    "C2": FellowshipCandidate("C2", [Accomplishments.FULFILLED_ALL_REQUIREMENTS]),
+    "C3": FellowshipCandidate("C3", [Accomplishments.FULFILLED_ALL_REQUIREMENTS]),
+    "C4": FellowshipCandidate("C4", [Accomplishments.FULFILLED_ALL_REQUIREMENTS]),
 }
 
-voter_choices_1 = {
-    
-    "V1": "C4",
-    "V2": "C2",
-    "V3": "C2",
-    "V4": "C3",
-    "V5": "C4",
-    "V6": "C3",
-    "V7": "C1",
-    "V8": "C4",
-    "V9": "C2",
-    "V10": "C4",
-}
+# Sample voter data.
+# Each voter has voted for a specific candidate. Different voters have different proven qualifications.
+# One voter in the sample is a fellowship candidate. Should they be allowed to vote?
+voter_sample_1 = [
+    Voter(CANDIDATES["C1"], []),
+    Voter(CANDIDATES["C1"], [NFT.FELLOWSHIP_COMM, NFT.FUNDA_1, NFT.FUNDA_2, NFT.FUNDA_3, NFT.FUNDA_4, NFT.FUNDA_4, NFT.FUNDA_5, NFT.FUNDA_LEGACY]),
+    Voter(CANDIDATES["C2"], [], isCandidate = True),
+    Voter(CANDIDATES["C3"], [NFT.FUNDA_1]),
+    Voter(CANDIDATES["C4"], [NFT.FUNDA_1, NFT.FUNDA_2]),
+    Voter(CANDIDATES["C3"], [NFT.ETHCC_TE_2023_BARCAMP_SPEAKER]),
+    Voter(CANDIDATES["C1"], [NFT.STUDY_SEASON_REGISTRATION, NFT.LIVE_TRACK_4, NFT.WONDERVERSE_TOP50]),
+    Voter(CANDIDATES["C4"], [NFT.STUDY_SEASON_REGISTRATION]),
+    Voter(CANDIDATES["C2"], [NFT.STUDY_SEASON_REGISTRATION, NFT.LIVE_TRACK_1, NFT.LIVE_TRACK_2]),
+    Voter(CANDIDATES["C4"], []),
+]
 
 def getSample(sampleID = 1):
 
     if sampleID != 1:
         raise Exception("Only one sample available at this point. Use default sampleID = 1.")
     
-    return (voters_1, voter_choices_1)
+    return copy.deepcopy(voter_sample_1)
+
+
