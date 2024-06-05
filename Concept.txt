@@ -12,6 +12,9 @@ A candidate's final score is the weighted sum of points that they receive from a
 
 The winner is the candidate with the highest final score.
 
+In case of a tie, the winner with the most support from the expert group wins. 
+If there is still a tie, the winner with the most support from the community group wins.
+If there is still a tie, an exception is raised.
 
 
 Stakeholder groups:
@@ -119,10 +122,6 @@ What are the cons of this algorithm?
 
 - Slightly complex behind-the-scenes analysis of votes: 
   Careful testing is needed to ensure that it works as expected.
-
-- A tie is unlikely, but possible:
-  In the event that two candidates receive the same number of aggregate points - WHAT SHOULD HAPPEN THEN?
-
 
 
 Other notes:
